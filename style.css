@@ -1,0 +1,37 @@
+
+#editor1 {
+    padding: 40px 40px 40px 40px;
+    display:block;
+    border: 3px inset grey;
+    min-height: 6IN;
+    width: 60%;
+    margin: 10px auto 0;
+    overflow-y: scroll;
+}
+fieldset {
+    margin: 12px auto 2px;
+    width: 55%;
+}
+button {
+    width: 5ex;
+    text-align: center;
+    padding: 1px 3px;
+}
+#Arial{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#TimesNewRoman{
+    font-family: "Times New Roman", Times, serif;
+}
+#CourierNew{
+    font-family: "Courier New";
+}
+#Verdana{
+    font-family: Verdana;
+}
+#Palatino{
+    font-family: "Palatino Linotype";
+}
+#ComicSansMS{
+    font-family: "Comic Sans MS";
+}
