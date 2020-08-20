@@ -25,6 +25,9 @@
         </button>
         <button class="fontStyle" onclick="strike()"><strike>S</strike>
         </button>
+        <button class="undo" onclick="undo()" style="background-color: forestgreen;width: 1in">UNDO
+        </button>
+
         <label for="fonts">Font: </label>
 
         <select name="fonts" id="fonts" onchange="fontchange()">
@@ -38,8 +41,8 @@
             <option value="ComicSansMS">Comic Sans MS</option>
         </select>
     </fieldset>
-    <span id="editor1" contenteditable="true">
-        The quick brown fox jumped over the lazy dog.
+    <span id="editor1" contenteditable="true" onchange="savetimer()">
+
     </span>
 
 
