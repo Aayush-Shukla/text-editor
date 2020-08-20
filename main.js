@@ -54,7 +54,8 @@ function bolder(){
     else {
 
 
-        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset, text, tag)
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset,text, window.getSelection().focusNode.data, tag)
+
 
         document.getElementById("editor1").innerHTML = newst
     }
@@ -77,7 +78,8 @@ function strike(){
 
     }
     else {
-        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset, text, tag)
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset,text, window.getSelection().focusNode.data, tag)
+
 
         document.getElementById("editor1").innerHTML = newst
     }
@@ -101,7 +103,8 @@ function underline(){
         }
     }
     else {
-        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset, text, tag)
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset,text, window.getSelection().focusNode.data, tag)
+
 
         document.getElementById("editor1").innerHTML = newst
     }
@@ -121,7 +124,7 @@ function fontchange(){
     // document.getElementById("editor1").innerHTML=newfont
 }
 function newstring(anchorText,anchorIndex,focusText,focusIndex,inner, selectedtext, tag){
-    console.log(inner)
+    console.log(inner,selectedtext)
     // newanchorText=anchorText.bold()
     // selectedtext=selectedtext.split(anchorText).join(newanchorText
 
@@ -130,13 +133,15 @@ function newstring(anchorText,anchorIndex,focusText,focusIndex,inner, selectedte
     var tagStart=`<${tag}>`
 
     if(anchorText==focusText){
-        var end = [anchorText.slice(0, anchorIndex), tagEnd, anchorText.slice(anchorIndex)].join('');
-        inner=inner.split(anchorText).join(end)
-        console.log(inner)
-        var start= [inner.slice(0, focusIndex), tagStart, inner.slice(focusIndex)].join('');
-        console.log(end,start)
-        inner=inner.split(end).join(start)
-        console.log(inner,"-----------------",start)
+        // var newText=tagStart+selectedtext+tagEnd
+        var end = [selectedtext.slice(0, anchorIndex), tagEnd, selectedtext.slice(anchorIndex)].join('');
+        console.log(end)
+        // inner=inner.split(selectedtext).join(newText)
+        // console.log(inner)
+        var start= [end.slice(0, focusIndex), tagStart, end.slice(focusIndex)].join('');
+        console.log(start)
+        inner=inner.split(selectedtext).join(start)
+        // console.log(inner,"-----------------",start)
 
         return (inner)
     }
