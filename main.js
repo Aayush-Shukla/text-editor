@@ -13,12 +13,27 @@ function bolder(){
     var tag='b'
     console.log(window.getSelection().focusNode.data,window.getSelection().focusOffset,window.getSelection().anchorNode.data,window.getSelection().anchorOffset);
 
-    text=document.getElementById("editor1").innerHTML
-    console.log(text)
-    // substring=window.getSelection().toString()
-    var newst=newstring(window.getSelection().anchorNode.data,window.getSelection().anchorOffset,window.getSelection().focusNode.data,window.getSelection().focusOffset,text,tag)
-    // newstring=text.split(substring).join("<b>"+substring+"</b>")
-    document.getElementById("editor1").innerHTML=newst
+    var text=document.getElementById("editor1").innerHTML
+    console.log(window.getSelection().focusOffset,window.getSelection().anchorOffset)
+    if(window.getSelection().focusOffset==window.getSelection().anchorOffset){
+        editor=document.getElementById("editor1")
+        if(editor.style.fontWeight=="bold"){
+            editor.style.fontWeight="unset"
+        }
+        else
+      {  editor.style.fontWeight="bold"}
+
+    }
+    else {
+
+
+        // text.bold()
+        // document.getElementById("editor1").innerHTML = text
+        console.log(text)
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset,text, window.getSelection().focusNode.data, tag)
+        // newText=newst.split(text).join()
+        document.getElementById("editor1").innerHTML = newst
+    }
 
     // console.log(substring)
 }function italicize(){
@@ -26,11 +41,23 @@ function bolder(){
     console.log(window.getSelection().focusNode.data,window.getSelection().focusOffset,window.getSelection().anchorNode.data,window.getSelection().anchorOffset);
 
     text=document.getElementById("editor1").innerHTML
-    console.log(text)
-    // substring=window.getSelection().toString()
-    var newst=newstring(window.getSelection().anchorNode.data,window.getSelection().anchorOffset,window.getSelection().focusNode.data,window.getSelection().focusOffset,text,tag)
-    // newstring=text.split(substring).join("<b>"+substring+"</b>")
-    document.getElementById("editor1").innerHTML=newst
+    if(window.getSelection().focusOffset==window.getSelection().anchorOffset){
+        editor=document.getElementById("editor1")
+
+        if(editor.style.fontStyle=="italic"){
+            editor.style.fontStyle="unset"
+        }
+        else
+        {editor.style.fontStyle="italic"}
+
+    }
+    else {
+
+
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset, text, tag)
+
+        document.getElementById("editor1").innerHTML = newst
+    }
 }
 
 function strike(){
@@ -39,10 +66,21 @@ function strike(){
 
     text=document.getElementById("editor1").innerHTML
     console.log(text)
-    // substring=window.getSelection().toString()
-    var newst=newstring(window.getSelection().anchorNode.data,window.getSelection().anchorOffset,window.getSelection().focusNode.data,window.getSelection().focusOffset,text,tag)
-    // newstring=text.split(substring).join("<b>"+substring+"</b>")
-    document.getElementById("editor1").innerHTML=newst
+    if(window.getSelection().focusOffset==window.getSelection().anchorOffset){
+
+        editor=document.getElementById("editor1")
+        if( editor.style.textDecoration=="line-through")
+        { editor.style.textDecoration="unset"}
+       else
+           { editor.style.textDecoration="line-through"}
+
+
+    }
+    else {
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset, text, tag)
+
+        document.getElementById("editor1").innerHTML = newst
+    }
 
 }
 
@@ -52,45 +90,72 @@ function underline(){
 
     text=document.getElementById("editor1").innerHTML
     console.log(text)
-    // substring=window.getSelection().toString()
-    var newst=newstring(window.getSelection().anchorNode.data,window.getSelection().anchorOffset,window.getSelection().focusNode.data,window.getSelection().focusOffset,text,tag)
-    // newstring=text.split(substring).join("<b>"+substring+"</b>")
-    document.getElementById("editor1").innerHTML=newst
+    if(window.getSelection().focusOffset==window.getSelection().anchorOffset){
+        editor=document.getElementById("editor1")
+
+        if(editor.style.textDecoration=="underline"){
+            editor.style.textDecoration="unset"
+        }
+        else {
+            editor.style.textDecoration = "underline"
+        }
+    }
+    else {
+        var newst = newstring(window.getSelection().anchorNode.data, window.getSelection().anchorOffset, window.getSelection().focusNode.data, window.getSelection().focusOffset, text, tag)
+
+        document.getElementById("editor1").innerHTML = newst
+    }
 }
 
 
 function fontchange(){
+    editor=document.getElementById("editor1")
     fonts=document.getElementById("fonts")
-    text=document.getElementById("editor1").innerHTML
+    // text=document.getElementById("editor1").innerHTML
     font=fonts.options[fonts.selectedIndex].text
-    var newfont=fontChange(window.getSelection().anchorNode.data,window.getSelection().anchorOffset,window.getSelection().focusNode.data,window.getSelection().focusOffset,text,font)
+    console.log(font)
+    editor.style.fontFamily=font
+    console.log(editor.style.fontFamily)
+    // var newfont=fontChange(window.getSelection().anchorNode.data,window.getSelection().anchorOffset,window.getSelection().focusNode.data,window.getSelection().focusOffset,text,font)
     // newstring=text.split(substring).join("<b>"+substring+"</b>")
-    document.getElementById("editor1").innerHTML=newfont
+    // document.getElementById("editor1").innerHTML=newfont
 }
-function newstring(anchorText,anchorIndex,focusText,focusIndex, selectedtext, tag){
-    console.log(anchorText,anchorIndex,focusText,focusIndex, selectedtext, tag)
-    anchorText=anchorText.slice(anchorIndex)
-    console.log(anchorText)
-    selectedtext=selectedtext.split(anchorText).join(`</${tag}>`+anchorText)
-   focusText=focusText.slice(0,focusIndex-1)
-    console.log(focusText)
-    selectedtext=selectedtext.split(focusText).join(focusText+`<${tag}>`)
-
-    console.log(selectedtext,tag)
-    return(selectedtext)
+function newstring(anchorText,anchorIndex,focusText,focusIndex,inner, selectedtext, tag){
+    console.log(inner)
+    // newanchorText=anchorText.bold()
+    // selectedtext=selectedtext.split(anchorText).join(newanchorText
 
 
-}function fontChange(anchorText,anchorIndex,focusText,focusIndex, selectedtext, font){
-    // console.log(anchorText,anchorIndex,focusText,focusIndex, selectedtext, tag)
-    anchorText=anchorText.slice(anchorIndex)
-    console.log(anchorText)
-    selectedtext=selectedtext.split(anchorText).join(`</font>`+anchorText)
-   focusText=focusText.slice(0,focusIndex-1)
-    console.log(focusText)
-    selectedtext=selectedtext.split(focusText).join(focusText+`<font face="${font}">`)
+    var tagEnd=`</${tag}>`
+    var tagStart=`<${tag}>`
 
-    // console.log(selectedtext,tag)
-    return(selectedtext)
+    if(anchorText==focusText){
+        var end = [anchorText.slice(0, anchorIndex), tagEnd, anchorText.slice(anchorIndex)].join('');
+        inner=inner.split(anchorText).join(end)
+        console.log(inner)
+        var start= [inner.slice(0, focusIndex), tagStart, inner.slice(focusIndex)].join('');
+        console.log(end,start)
+        inner=inner.split(end).join(start)
+        console.log(inner,"-----------------",start)
+
+        return (inner)
+    }
+
+else{
+
+            var aoutput = [anchorText.slice(0, anchorIndex), tagEnd, anchorText.slice(anchorIndex)].join('');
+
+            console.log(anchorText,aoutput)
+            inner=inner.split(anchorText).join(aoutput)
+
+            var foutput=[focusText.slice(0, focusIndex), tagStart, focusText.slice(focusIndex)].join('');
+           // focusText=focusText.slice(0,focusIndex-1)
+            console.log(focusText,foutput)
+            inner=inner.split(focusText).join(foutput)
+
+            console.log(inner,tag)
+            return(inner)
+        }
 
 
 }

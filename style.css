@@ -1,4 +1,6 @@
-
+body{
+    background-color: #7aa6c2;
+}
 #editor1 {
     padding: 40px 40px 40px 40px;
     display:block;
@@ -7,10 +9,13 @@
     width: 60%;
     margin: 10px auto 0;
     overflow-y: scroll;
+    background-color: whitesmoke;
 }
 fieldset {
     margin: 12px auto 2px;
     width: 55%;
+    background-color: grey;
+    color: whitesmoke;
 }
 button {
     width: 5ex;
@@ -34,4 +39,8 @@ button {
 }
 #ComicSansMS{
     font-family: "Comic Sans MS";
+
+}
+#Fantasy{
+    font-family: fantasy;
 }
